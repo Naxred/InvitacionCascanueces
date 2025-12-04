@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Una Invitación Especial ✨</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            color: #fff;
+        }
+
+        /* Animación de nieve */
+        .snowflake {
+            position: fixed;
+            top: -10px;
+            z-index: 1;
+            user-select: none;
+            cursor: default;
+            animation: fall linear infinite;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1em;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Container principal */
+        .invitation-container {
+            position: relative;
+            z-index: 2;
+            max-width: 500px;
+            width: 90%;
+            background: rgba(20, 20, 40, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                        0 0 40px rgba(212, 175, 55, 0.2);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .ornament {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 300;
+            color: #e8d9c5;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .event-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #c41e3a;
+            margin: 25px 0 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .details {
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 15px;
+            padding: 25px 20px;
+            margin: 25px 0;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 12px 0;
+            font-size: 1rem;
+            color: #f0f0f0;
+        }
+
+        .detail-item .icon {
+            font-size: 1.3rem;
+            color: #d4af37;
+        }
+
+        .detail-item strong {
+            color: #d4af37;
+            margin-right: 5px;
+        }
+
+        .love-message {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            color: #e8d9c5;
+            margin: 25px 0;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .btn-accept {
+            background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
+            color: white;
+            border: none;
+            padding: 18px 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(196, 30, 58, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .btn-accept:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(196, 30, 58, 0.6);
+            background: linear-gradient(135deg, #d4244a 0%, #9b0000 100%);
+        }
+
+        .btn-accept:active {
+            transform: translateY(-1px);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
+            margin: 50% auto;
+            padding: 40px 30px;
+            border: 2px solid #d4af37;
+            border-radius: 25px;
+            width: 85%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+            animation: slideIn 0.5s ease;
+            transform: translateY(-50%);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-30%) scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(-50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .modal-emoji {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: heartBeat 1s ease infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.2);
+            }
+            50% {
+                transform: scale(1);
+            }
+        }
+
+        .modal-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: #d4af37;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .modal-close {
+            background: #d4af37;
+            color: #1a1a2e;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .modal-close:hover {
+            background: #c9a332;
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .event-title {
+                font-size: 1.6rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .detail-item {
+                font-size: 0.9rem;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .btn-accept {
+                padding: 16px 40px;
+                font-size: 1rem;
+            }
+
+            .modal-content {
+                margin-top: 40%;
+                padding: 35px 25px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .invitation-container {
+                padding: 50px 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Container de la invitación -->
+    <div class="invitation-container">
+        <div class="ornament">✨🎭✨</div>
+
+        <h1>Una Noche Mágica</h1>
+        <p class="subtitle">Te invito a vivir un momento inolvidable</p>
+
+        <div class="event-title">El Cascanueces</div>
+        <p style="color: #e8d9c5; font-style: italic; margin-top: -10px;">Ballet</p>
+
+        <div class="details">
+            <div class="detail-item">
+                <span class="icon">📅</span>
+                <div><strong>Fecha:</strong> Viernes 6 de Diciembre</div>
+            </div>
+            <div class="detail-item">
+                <span class="icon">🕗</span>
+                <div><strong>Hora:</strong> 8:00 PM</div>
+            </div>
+            <div class="detail-item">
+                <span class="icon">📍</span>
+                <div><strong>Lugar:</strong> Auditorio San Pedro</div>
+            </div>
+            <div class="detail-item" style="font-size: 0.9rem; color: #d4af37;">
+                San Pedro Garza García
+            </div>
+        </div>
+
+        <p class="love-message">
+            Quiero compartir contigo esta experiencia llena de magia, música y belleza.
+            Será una noche especial a tu lado. 💖
+        </p>
+
+        <button class="btn-accept" id="acceptBtn">
+            Aceptar Invitación
+        </button>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-emoji">💕</div>
+            <p class="modal-text">
+                ¡Sabía que dirías que sí!<br>
+                Te amo.<br>
+                Nos vemos el viernes.
+            </p>
+            <button class="modal-close" id="closeModal">Cerrar</button>
+        </div>
+    </div>
+
+    <!-- Canvas Confetti CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+    <script>
+        // Crear copos de nieve
+        function createSnowflakes() {
+            const snowflakeChars = ['❄', '❅', '❆'];
+            const numberOfSnowflakes = 50;
+
+            for (let i = 0; i < numberOfSnowflakes; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.classList.add('snowflake');
+                snowflake.textContent = snowflakeChars[Math.floor(Math.random() * snowflakeChars.length)];
+                snowflake.style.left = Math.random() * 100 + '%';
+                snowflake.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                snowflake.style.animationDelay = Math.random() * 5 + 's';
+                snowflake.style.fontSize = (Math.random() * 0.5 + 0.5) + 'em';
+                snowflake.style.opacity = Math.random() * 0.6 + 0.4;
+                document.body.appendChild(snowflake);
+            }
+        }
+
+        createSnowflakes();
+
+        // Funcionalidad del botón
+        const acceptBtn = document.getElementById('acceptBtn');
+        const modal = document.getElementById('modal');
+        const closeModalBtn = document.getElementById('closeModal');
+
+        acceptBtn.addEventListener('click', function() {
+            // Confetti
+            const duration = 3000;
+            const end = Date.now() + duration;
+
+            (function frame() {
+                confetti({
+                    particleCount: 7,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: ['#d4af37', '#c41e3a', '#ffffff', '#ffd700']
+                });
+                confetti({
+                    particleCount: 7,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: ['#d4af37', '#c41e3a', '#ffffff', '#ffd700']
+                });
+
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            }());
+
+            // Mostrar modal después de un pequeño delay
+            setTimeout(() => {
+                modal.style.display = 'block';
+            }, 500);
+        });
+
+        closeModalBtn.addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+
+        // Cerrar modal al hacer clic fuera
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
