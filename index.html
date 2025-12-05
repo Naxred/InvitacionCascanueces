@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Invitación especial para El Cascanueces - Viernes 5 de Diciembre">
     <title>Una Invitación Especial ✨</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,12 +20,10 @@
             font-family: 'Montserrat', sans-serif;
             background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             overflow-x: hidden;
             position: relative;
             color: #fff;
+            padding: 40px 0;
         }
 
         /* Animación de nieve */
@@ -49,8 +48,9 @@
         .invitation-container {
             position: relative;
             z-index: 2;
-            max-width: 500px;
+            max-width: 600px;
             width: 90%;
+            margin: 0 auto;
             background: rgba(20, 20, 40, 0.85);
             backdrop-filter: blur(10px);
             border-radius: 30px;
@@ -116,6 +116,29 @@
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
         }
 
+        /* Estilos para imágenes */
+        .image-container {
+            margin: 30px 0;
+            width: 100%;
+        }
+
+        .event-image {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 20px;
+            border: 3px solid rgba(212, 175, 55, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
+                        0 0 20px rgba(212, 175, 55, 0.3);
+            transition: transform 0.3s ease;
+            margin: 20px auto;
+            display: block;
+        }
+
+        .event-image:hover {
+            transform: scale(1.02);
+        }
+
         .details {
             background: rgba(212, 175, 55, 0.1);
             border-radius: 15px;
@@ -142,6 +165,47 @@
         .detail-item strong {
             color: #d4af37;
             margin-right: 5px;
+        }
+
+        /* Sección de galería */
+        .gallery-section {
+            margin: 40px 0;
+            padding: 30px 0;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #d4af37;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            border-radius: 20px;
+            border: 3px solid rgba(212, 175, 55, 0.6);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
+                        0 0 20px rgba(212, 175, 55, 0.4),
+                        inset 0 0 20px rgba(212, 175, 55, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .gallery-image:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6),
+                        0 0 30px rgba(212, 175, 55, 0.6);
         }
 
         .love-message {
@@ -195,7 +259,7 @@
 
         .modal-content {
             background: linear-gradient(135deg, #1a1a2e 0%, #2d2d44 100%);
-            margin: 50% auto;
+            margin: 15% auto;
             padding: 40px 30px;
             border: 2px solid #d4af37;
             border-radius: 25px;
@@ -204,16 +268,15 @@
             text-align: center;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
             animation: slideIn 0.5s ease;
-            transform: translateY(-50%);
         }
 
         @keyframes slideIn {
             from {
-                transform: translateY(-30%) scale(0.8);
+                transform: translateY(-30px) scale(0.8);
                 opacity: 0;
             }
             to {
-                transform: translateY(-50%) scale(1);
+                transform: translateY(0) scale(1);
                 opacity: 1;
             }
         }
@@ -264,11 +327,19 @@
 
         /* Responsive */
         @media (max-width: 480px) {
+            body {
+                padding: 20px 0;
+            }
+
             h1 {
                 font-size: 2rem;
             }
 
             .event-title {
+                font-size: 1.6rem;
+            }
+
+            .section-title {
                 font-size: 1.6rem;
             }
 
@@ -287,9 +358,14 @@
                 font-size: 1rem;
             }
 
-            .modal-content {
-                margin-top: 40%;
-                padding: 35px 25px;
+            .invitation-container {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (min-width: 600px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -312,10 +388,26 @@
         <div class="event-title">El Cascanueces</div>
         <p style="color: #e8d9c5; font-style: italic; margin-top: -10px;">Ballet</p>
 
+        <!-- Sección de galería de momentos -->
+        <div class="gallery-section">
+            <h2 class="section-title">Nuestros Momentos</h2>
+            <div class="gallery-grid">
+                <img src="images/foto1.jpg" alt="Momento especial 1" class="gallery-image">
+                <img src="images/foto2.jpg" alt="Momento especial 2" class="gallery-image">
+                <img src="images/foto3.jpg" alt="Momento especial 3" class="gallery-image">
+                <img src="images/foto4.jpg" alt="Momento especial 4" class="gallery-image">
+            </div>
+        </div>
+
+        <p class="love-message" style="margin-top: 40px;">
+            Quiero compartir contigo esta experiencia llena de magia, música y belleza.
+            Será una noche especial a tu lado. 💖
+        </p>
+
         <div class="details">
             <div class="detail-item">
                 <span class="icon">📅</span>
-                <div><strong>Fecha:</strong> Viernes 6 de Diciembre</div>
+                <div><strong>Fecha:</strong> Viernes 5 de Diciembre</div>
             </div>
             <div class="detail-item">
                 <span class="icon">🕗</span>
@@ -330,10 +422,10 @@
             </div>
         </div>
 
-        <p class="love-message">
-            Quiero compartir contigo esta experiencia llena de magia, música y belleza.
-            Será una noche especial a tu lado. 💖
-        </p>
+        <!-- Imagen de la invitación digital -->
+        <div class="image-container">
+            <img src="images/Invitacion1.jpg" alt="Boleto El Cascanueces" class="event-image">
+        </div>
 
         <button class="btn-accept" id="acceptBtn">
             Aceptar Invitación
